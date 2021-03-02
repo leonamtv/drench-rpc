@@ -7,6 +7,14 @@ const drench = ( size = 6, maxCount = 20, matrix = [] ) => {
     let _maxCount = maxCount
     let paintsCount = 0
 
+    const sync = ( matrix ) => {
+        for ( let i = 0; i < size; i++ ) {
+            for ( let j = 0; j < size; j++ ) {
+                _matrix[i][j] = parseInt(matrix[i][j])
+            }
+        }
+    }
+
     const init = () => {
         if ( matrix.length == 0 ) {
             _matrix = Array(size)
@@ -81,18 +89,19 @@ const drench = ( size = 6, maxCount = 20, matrix = [] ) => {
     }
 
     const array_colors = [
-        '▄'.green,
         '▄'.red,
-        '▄'.blue,
+        '▄'.green,
         '▄'.yellow,
         '▄'.magenta,
         '▄'.cyan,
+        '▄'.blue,
         '▄'.brightRed,
         '▄'.grey,
     ]
 
     return {
         'init'            : init,
+        'sync'            : sync,
         'getOptions'      : getOptions,
         'print'           : print,
         'remainingPaints' : remainingPaints,
