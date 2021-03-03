@@ -8,10 +8,13 @@ from xmlrpc.server import SimpleXMLRPCRequestHandler
 
 import xmlrpc.client
 
+LOCAL_SERVER_PORT = 3003
+REMOTE_SERVER_PORT = 3001
+
 d = Drench (6, 30)
 
 def server ( functions ) :
-    with SimpleXMLRPCServer(('0.0.0.0', 3003),requestHandler=RequestHandler, logRequests=False) as server :
+    with SimpleXMLRPCServer(('0.0.0.0', LOCAL_SERVER_PORT),requestHandler=RequestHandler, logRequests=False) as server :
         server.register_introspection_functions ()
         for func in functions :
             server.register_function ( func['func'], func['name'] )
@@ -26,9 +29,6 @@ thread = Thread(target=server, args=([{ 'func' : update, 'name' : 'update' },],)
 
 class RequestHandler ( SimpleXMLRPCRequestHandler ) :
     rpc_paths = ('/RPC2')
-
-LOCAL_SERVER_PORT = 3003
-REMOTE_SERVER_PORT = 3001
 
 def client_update ( color ) :
     with xmlrpc.client.ServerProxy (f"http://localhost:" + str(REMOTE_SERVER_PORT) + '/rpc') as proxy :
