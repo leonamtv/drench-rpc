@@ -87,4 +87,4 @@ server.on ( 'sync', ( err, params, callback ) => {
 process.on('uncaughtException', function (err) {
     console.error(err.stack);
     console.log("Node NOT Exiting...");
-  });
+});
