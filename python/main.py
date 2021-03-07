@@ -12,8 +12,7 @@ import xmlrpc.client
 LOCAL_SERVER_PORT = 3003
 REMOTE_SERVER_PORT = 3001
 
-# d = Drench (6, 20)
-d = Drench (4, 20)
+d = Drench (6, 20)
 
 def server ( functions ) :
     with SimpleXMLRPCServer(('0.0.0.0', LOCAL_SERVER_PORT),requestHandler=RequestHandler, logRequests=False) as server :

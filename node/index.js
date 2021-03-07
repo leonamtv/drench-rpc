@@ -2,8 +2,7 @@ const xmlrpc = require('xmlrpc')
 const drench = require('./core/drench')
 const prompt = require('prompt-sync')();
 
-// const d = drench(6, 20)
-const d = drench(4, 20)
+const d = drench(6, 20)
 d.init()
 
 const LOCAL_SERVER_PORT = 3001
