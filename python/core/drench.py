@@ -37,6 +37,16 @@ class Drench :
     def remaining_paints ( self ) :
         return self.max_count - self.paints_count
 
+    def is_full ( self ):
+        val = self.matrix[0][0]
+        cont = 0
+        for i in range ( self.size ) :
+            for j in range ( self.size ) :
+                if self.matrix[i][j] != val  :
+                    return False
+                cont += 1
+        return cont == ( self.size ** 2 )
+
     def is_over ( self ) :
         if self.paints_count >= self.max_count :
             return True

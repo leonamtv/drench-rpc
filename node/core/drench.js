@@ -37,6 +37,19 @@ const drench = ( size = 6, maxCount = 20, matrix = [] ) => {
         propagate ( color, oldColor, x - 1, y )
     }
 
+    const full = () => {
+        let val = _matrix[0][0]
+        let cont = 0
+        for ( let i = 0; i < size; i ++ ) {
+            for ( let j = 0; j < size; j ++ ) {
+                if ( _matrix[i][j] != val )
+                    return false
+                cont += 1
+            }
+        }
+        return cont == ( size * size )
+    }
+
     const gameOver = () => {
         if ( paintsCount >= _maxCount ) 
             return true
@@ -106,6 +119,7 @@ const drench = ( size = 6, maxCount = 20, matrix = [] ) => {
         'print'           : print,
         'remainingPaints' : remainingPaints,
         'isOver'          : gameOver,
+        'isFull'          : full,
         'propagateColor'  : propagate,
         'updateMatrix'    : updateMatrix
     }
